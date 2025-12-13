@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 
-class Fotografias (models.Model):
+class Fotografia (models.Model):
     OPCOES_CATEGORIA = [
         ("NEBULOSA","Nebulosa"),
         ("ESTRELA","Estrela"),

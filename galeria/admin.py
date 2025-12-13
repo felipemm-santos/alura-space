@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from galeria.models import Fotografias
+from galeria.models import Fotografia
 
 # Register your models here.
 
@@ -12,4 +12,4 @@ class ListandoFotografias(admin.ModelAdmin):
     list_per_page = 4
     list_editable = ("publicada",)
 
-admin.site.register(Fotografias, ListandoFotografias)
+admin.site.register(Fotografia, ListandoFotografias)
