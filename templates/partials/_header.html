@@ -4,6 +4,17 @@
     src="{% static '/assets/logo/Logo(2).png' %} "
     alt="Logo da Alura Space"
   />
+  {% if messages %}
+    {% for message in messages %}
+      <div 
+        class="alert alert-dismissible fade show 
+        {% if message.tags %} alert-{{ message.tags }}
+        {% else %} alert-info {% endif %}"
+        role="alert">
+        {{ message }}        
+      </div>
+    {% endfor %}
+  {% endif %}
   <div class="cabecalho__busca">
     <div class="busca__fundo">
       <form action="{% url 'buscar' %}" >
