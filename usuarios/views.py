@@ -30,11 +30,7 @@ def cadastro_view(request):
     if request.method == 'POST':
         form = CadastroForms(request.POST)
         # validação do formulário
-        if form.is_valid():
-            # verificação de senha
-            if form.cleaned_data['senha'] != form.cleaned_data['confirma_senha']:
-                messages.error(request, 'As senhas não coincidem.')
-                return redirect('cadastro')
+        if form.is_valid():            
             
             nome_cadastro = form.cleaned_data['nome_cadastro']
             email = form.cleaned_data['email']
