@@ -1,15 +1,26 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, redirect, render
 from galeria.models import Fotografia
 
 def galeria_view(request):
-    fotos = Fotografia.objects.filter(publicada=True).order_by('-data_publicacao')
-    return render(request, 'galeria/index.html', {'fotografias': fotos})    
+    if not request.user.is_authenticated:
+        return redirect('login')    
+    
+    fotos = Fotografia.objects.filter(
+                publicada=True,
+            ).order_by('-data_publicacao')
+    return render(request, 'galeria/index.html', {'fotografias': fotos})
 
 def imagem_view(request, foto_id):
+    if not request.user.is_authenticated:
+        return redirect('login')
+    
     fotografia = get_object_or_404(Fotografia, pk=foto_id)
     return render(request, 'galeria/imagem.html', {'fotografia': fotografia})
 
 def buscar_view(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
+
     fotos = Fotografia.objects.filter(
                 publicada=True,
             ).order_by('-data_publicacao')
