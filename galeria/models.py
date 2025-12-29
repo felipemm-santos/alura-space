@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -17,6 +18,14 @@ class Fotografia (models.Model):
     legenda = models.CharField(max_length=300, blank=True, null=True)
     categoria = models.CharField(max_length=100, choices=OPCOES_CATEGORIA,blank=True, null=True)
     publicada = models.BooleanField(default=False)
+
+    usuario = models.ForeignKey(
+        to=User, 
+        on_delete=models.SET_NULL, 
+        null=True,
+        blank=True,
+        related_name='user'
+        )
 
     def __str__(self):
         return self.titulo
