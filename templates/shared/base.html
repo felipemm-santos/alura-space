@@ -18,7 +18,14 @@
   </head>
 
   <body>
-    {% block content %} {% endblock %} {% include 'shared/partials/_footer.html'
-    %}
+    <div class="pagina-inicial">      
+      {% include 'shared/partials/_header.html' %}
+      <main class="principal">
+        {% include 'shared/partials/_sidebar.html' %}
+
+        {% block content %} {% endblock %}        
+      </main>
+    </div>
+    {% include 'shared/partials/_footer.html'%}
   </body>
 </html>

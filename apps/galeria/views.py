@@ -79,3 +79,14 @@ def deletar_imagem_view(request, foto_id):
     fotografia = get_object_or_404(Fotografia, pk=foto_id)
     fotografia.delete()
     return redirect('galeria')
+
+def filtrar_por_categoria_view(request, categoria):
+    if not request.user.is_authenticated:
+        return redirect('login')
+
+    fotos = Fotografia.objects.filter(
+                publicada=True,
+                categoria__iexact=categoria
+            ).order_by('-data_publicacao')
+    
+    return render(request, "galeria/index.html", {'fotografias': fotos})
