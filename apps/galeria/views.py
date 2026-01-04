@@ -32,7 +32,7 @@ def buscar_view(request):
         if termo:
             fotos = fotos.filter(titulo__icontains=termo)
 
-    return render (request, "galeria/buscar.html", {'fotografias': fotos})
+    return render(request, "galeria/index.html", {'fotografias': fotos})
 
 def adicionar_imagem_view(request):
     if not request.user.is_authenticated:        
