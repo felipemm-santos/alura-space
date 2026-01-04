@@ -11,28 +11,22 @@
 {% endblock styles %} 
 
 {% block content %}
-<div class="pagina-inicial">
-  {% include 'shared/partials/_header.html' %}
-  <main class="principal">
-    {% include 'shared/partials/_sidebar.html' %}
-    <section class="galeria">
-      <form action="{% url 'adicionar_imagem' %}" method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        <div class="row">
-          {% include 'shared/partials/_form_fields.html' with form=form %}
+  <section class="galeria">
+    <form action="{% url 'adicionar_imagem' %}" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="row">
+        {% include 'shared/partials/_form_fields.html' with form=form %}
 
-          <div class="col-12 text-center">
-            <button
-              type="submit"
-              class="btn btn-success col-12"
-              style="padding: top 5px"
-            >
-              Publicar
-            </button>
-          </div>
+        <div class="col-12 text-center">
+          <button
+            type="submit"
+            class="btn btn-success col-12"
+            style="padding: top 5px"
+          >
+            Publicar
+          </button>
         </div>
-      </form>
-    </section>
-  </main>
-</div>
+      </div>
+    </form>
+  </section>
 {% endblock %}

@@ -1,11 +1,7 @@
 {% extends 'shared/base.html' %}
 {% load static %}
 
-{% block content %}
-  <div class="pagina-inicial">
-    {% include 'shared/partials/_header.html' %}
-    <main class="principal">
-      {% include 'shared/partials/_sidebar.html' %}
+{% block content %}  
       <section class="conteudo">
         <section class="banner">
           <img
@@ -70,6 +66,4 @@
           </div>
         </section>
       </section>
-    </main>
-  </div>
 {% endblock %}
